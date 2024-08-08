@@ -1,9 +1,12 @@
-import './App.css';
+import "./App.css";
+import AllRoutes from "./components/AllRoutes.jsx/AllRoutes";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <h2>Contact Manager App using react & bootstrap</h2>
+      <Navbar />
+      <AllRoutes />
     </div>
   );
 }
