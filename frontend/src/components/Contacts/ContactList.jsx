@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
+import { FaEye,FaRegEdit } from "react-icons/fa";
+import { AiOutlineDelete } from "react-icons/ai";
 
 const ContactList = () => {
   return (
@@ -63,9 +65,10 @@ const ContactList = () => {
                       <img
                         src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png"
                         alt="user-icon"
-                        className="user-icon"
+                        className="img-fluid"
                       />
                     </div>
+
                     <div className="col-md-7">
                       <ul className="list-group">
                         <li list-group-item>
@@ -75,11 +78,20 @@ const ContactList = () => {
                           Mobile : <span className="fw-bold">1234567890</span>
                         </li>
                         <li list-group-item>
-                          Email : <span className="fw-bold">vinod@gmail.com</span>
+                          Email :{" "}
+                          <span className="fw-bold">vinod@gmail.com</span>
                         </li>
                       </ul>
                     </div>
-                    <div className="col-md-1"></div>
+
+                    <div className="col-md-1">
+                      <Link className="btn btn-warning my-1" to={"/contacts/view/:contactID"}>
+                     <FaEye/></Link>
+                     <Link className="btn btn-success my-1" to={"/contacts/view/:contactID"}>
+                     <FaRegEdit/> </Link>
+                     <Link className="btn btn-danger my-1" to={"/contacts/view/:contactID"}>
+                     <AiOutlineDelete/></Link>
+                    </div>
                   </div>
                 </div>
               </div>
