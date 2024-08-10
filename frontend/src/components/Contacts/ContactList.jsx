@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
-import { FaEye,FaRegEdit } from "react-icons/fa";
+import { FaEye, FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const ContactList = () => {
@@ -32,70 +32,128 @@ const ContactList = () => {
             </div>
 
             <div className="row">
-              <div className="col">
-                <form action="" className="row">
+              <div className="col-md-8">
+                <form className="input-group">
                   <input
                     type="text"
-                    classNa
-                    me="form-control"
+                    className="form-control"
                     placeholder="Search Names"
                   />
+                  <button className="btn btn-dark ms-2" type="submit">
+                    Search
+                  </button>
                 </form>
-              </div>
-              <div className="col">
-                <input
-                  type="submit"
-                  className="btn btn-outline-dark"
-                  value="Search"
-                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="contact-list">
+      <section className="contact-list mt-5">
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <div className="card">
+              <div className="card mb-3">
                 <div className="card-body">
-                  <div className="row">
-                    <div className="col-md-4">
+                  <div className="row align-items-center">
+                    <div className="col-md-3">
                       <img
                         src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png"
                         alt="user-icon"
-                        className="img-fluid"
+                        className="img-fluid rounded-circle"
+                        style={{ width: "75px", height: "75px" }}
                       />
                     </div>
 
-                    <div className="col-md-7">
+                    <div className="col-md-8">
                       <ul className="list-group">
-                        <li list-group-item>
-                          Name : <span className="fw-bold">Vinod</span>
+                        <li className="list-group-item">
+                          Name: <span className="fw-bold">Vinod</span>
                         </li>
-                        <li list-group-item>
-                          Mobile : <span className="fw-bold">1234567890</span>
+                        <li className="list-group-item">
+                          Mobile: <span className="fw-bold">1234567890</span>
                         </li>
-                        <li list-group-item>
-                          Email :{" "}
+                        <li className="list-group-item">
+                          Email:{" "}
                           <span className="fw-bold">vinod@gmail.com</span>
                         </li>
                       </ul>
                     </div>
 
-                    <div className="col-md-1">
-                      <Link className="btn btn-warning my-1" to={"/contacts/view/:contactID"}>
-                     <FaEye/></Link>
-                     <Link className="btn btn-success my-1" to={"/contacts/view/:contactID"}>
-                     <FaRegEdit/> </Link>
-                     <Link className="btn btn-danger my-1" to={"/contacts/view/:contactID"}>
-                     <AiOutlineDelete/></Link>
+                    <div className="col-md-1 d-flex flex-column align-items-center">
+                      <Link
+                        className="btn btn-warning my-1"
+                        to={"/contacts/view/:contactID"}
+                      >
+                        <FaEye />
+                      </Link>
+                      <Link
+                        className="btn btn-success my-1"
+                        to={"/contacts/edit/:contactID"}
+                      >
+                        <FaRegEdit />
+                      </Link>
+                      <Link className="btn btn-danger my-1">
+                        <AiOutlineDelete />
+                      </Link>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            {/* Duplicate the above card structure for more cards */}
+            <div className="col-md-6">
+              {/* Repeat card code here */}
+              <div className="card mb-3">
+                <div className="card-body">
+                  <div className="row align-items-center">
+                    <div className="col-md-3">
+                      <img
+                        src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png"
+                        alt="user-icon"
+                        className="img-fluid rounded-circle"
+                        style={{ width: "75px", height: "75px" }}
+                      />
+                    </div>
+
+                    <div className="col-md-8">
+                      <ul className="list-group">
+                        <li className="list-group-item">
+                          Name: <span className="fw-bold">Vinod</span>
+                        </li>
+                        <li className="list-group-item">
+                          Mobile: <span className="fw-bold">1234567890</span>
+                        </li>
+                        <li className="list-group-item">
+                          Email:{" "}
+                          <span className="fw-bold">vinod@gmail.com</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="col-md-1 d-flex flex-column align-items-center">
+                      <Link
+                        className="btn btn-warning my-1"
+                        to={"/contacts/view/:contactID"}
+                      >
+                        <FaEye />
+                      </Link>
+                      <Link
+                        className="btn btn-success my-1"
+                        to={"/contacts/edit/:contactID"}
+                      >
+                        <FaRegEdit />
+                      </Link>
+                      <Link className="btn btn-danger my-1">
+                        <AiOutlineDelete />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
           </div>
         </div>
       </section>
