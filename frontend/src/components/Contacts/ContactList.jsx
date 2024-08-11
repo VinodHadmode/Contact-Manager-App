@@ -7,6 +7,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
+  const [filteredContacts,setFilteredContacts]=useState([])
+  const [searchQuery, setSearchQuery] = useState("");
 
   const getData = async () => {
     axios
@@ -14,11 +16,35 @@ const ContactList = () => {
       .then((res) => {
         console.log(res.data);
         setContacts(res.data);
+        setFilteredContacts(res.data)
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const handleDelete = async (contactID) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/contacts/${contactID}`
+      );
+      if (response) {
+        getData();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+    const filteredContacts=contacts.filter((contact)=>{
+      return contact.name.toLowerCase().includes(searchQuery.toLowerCase())
+    })
+    setFilteredContacts(filteredContacts)
+  };
+
+  
 
   useEffect(() => {
     getData();
@@ -52,11 +78,13 @@ const ContactList = () => {
 
             <div className="row">
               <div className="col-md-6">
-                <form className="input-group">
+                <form className="input-group" >
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Search Names"
+                    value={searchQuery}
+                    onChange={handleSearch}
                   />
                   <button className="btn btn-outline-dark ms-2" type="submit">
                     Search
@@ -71,7 +99,7 @@ const ContactList = () => {
       <section className="contact-list mt-5">
         <div className="container">
           <div className="row">
-            {contacts.map((contact) => (
+            {filteredContacts.map((contact) => (
               <div className="col-md-6 mb-3" key={contact.id}>
                 <div className="card h-100">
                   <div className="card-body">
@@ -87,13 +115,16 @@ const ContactList = () => {
                       <div className="col-6">
                         <ul className="list-group">
                           <li className="list-group-item">
-                            Name: <span className="fw-bold">{contact.name}</span>
+                            Name:{" "}
+                            <span className="fw-bold">{contact.name}</span>
                           </li>
                           <li className="list-group-item">
-                            Mobile: <span className="fw-bold">{contact.mobile}</span>
+                            Mobile:{" "}
+                            <span className="fw-bold">{contact.mobile}</span>
                           </li>
                           <li className="list-group-item">
-                            Email: <span className="fw-bold">{contact.email}</span>
+                            Email:{" "}
+                            <span className="fw-bold">{contact.email}</span>
                           </li>
                         </ul>
                       </div>
@@ -111,7 +142,10 @@ const ContactList = () => {
                         >
                           <FaRegEdit />
                         </Link>
-                        <button className="btn btn-danger my-1">
+                        <button
+                          className="btn btn-danger my-1"
+                          onClick={() => handleDelete(contact.id)}
+                        >
                           <AiOutlineDelete />
                         </button>
                       </div>

@@ -1,12 +1,23 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+const initState = {
+  name: "",
+  photo: "",
+  mobile: "",
+  email: "",
+  company: "",
+  title: "",
+  group: "",
+};
 
 const EditContact = () => {
-  const [contactToEdit, setContactToedit] = useState({});
+  const [contactToEdit, setContactToedit] = useState(initState);
   const [groups, setGroups] = useState([]);
 
   const { contactID } = useParams();
+  const navigate = useNavigate();
 
   const getContact = async () => {
     try {
@@ -16,8 +27,8 @@ const EditContact = () => {
 
       const groupResponse = await axios.get(`http://localhost:3000/groups`);
 
-      console.log("response", response.data);
-      console.log("groupResponse", groupResponse.data);
+      // console.log("response", response.data);
+      // console.log("groupResponse", groupResponse.data);
 
       setContactToedit(response.data);
       setGroups(groupResponse.data);
@@ -25,9 +36,34 @@ const EditContact = () => {
       console.log(error);
     }
   };
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setContactToedit({ ...contactToEdit, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `http://localhost:3000/contacts/${contactID}`,
+        contactToEdit
+      );
+
+      if (response) {
+        navigate("/");
+      } else {
+        navigate(`/contacts/list/${contactID}`);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getContact();
   }, []);
+
   return (
     <>
       <section className="edit-contacts">
@@ -46,14 +82,15 @@ const EditContact = () => {
 
           <div className="row">
             <div className="col-md-6">
-              <form>
+              <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                   <input
                     type="text"
                     className="form-control"
                     placeholder="Enter name"
-                    name=""
+                    name="name"
                     value={contactToEdit.name}
+                    onChange={handleInput}
                   />
                 </div>
 
@@ -62,8 +99,9 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Photo URL"
-                    name=""
+                    name="photo"
                     value={contactToEdit.photo}
+                    onChange={handleInput}
                   />
                 </div>
 
@@ -72,8 +110,9 @@ const EditContact = () => {
                     type="number"
                     className="form-control"
                     placeholder="Mobile"
-                    name=""
+                    name="mobile"
                     value={contactToEdit.mobile}
+                    onChange={handleInput}
                   />
                 </div>
 
@@ -82,8 +121,9 @@ const EditContact = () => {
                     type="email"
                     className="form-control"
                     placeholder="Email"
-                    name=""
+                    name="email"
                     value={contactToEdit.email}
+                    onChange={handleInput}
                   />
                 </div>
 
@@ -92,8 +132,9 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Company"
-                    name=""
+                    name="company"
                     value={contactToEdit.company}
+                    onChange={handleInput}
                   />
                 </div>
 
@@ -102,16 +143,18 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Title"
-                    name=""
+                    name="title"
                     value={contactToEdit.title}
+                    onChange={handleInput}
                   />
                 </div>
 
                 <div className="mb-3">
                   <select
                     className="form-control"
-                    name=""
+                    name="group"
                     value={contactToEdit.group}
+                    onChange={handleInput}
                   >
                     <option value="">Select a group</option>
                     {groups.length > 0 &&
@@ -141,7 +184,7 @@ const EditContact = () => {
             <div className="col-md-6 text-center">
               <img
                 className="user-icon img-fluid rounded-circle border"
-                src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png"
+                src={contactToEdit.photo}
                 alt="user-icon"
                 style={{ width: "200px", height: "200px" }}
               />
