@@ -1,7 +1,33 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 
 const EditContact = () => {
+  const [contactToEdit, setContactToedit] = useState({});
+  const [groups, setGroups] = useState([]);
+
+  const { contactID } = useParams();
+
+  const getContact = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:3000/contacts/${contactID}`
+      );
+
+      const groupResponse = await axios.get(`http://localhost:3000/groups`);
+
+      console.log("response", response.data);
+      console.log("groupResponse", groupResponse.data);
+
+      setContactToedit(response.data);
+      setGroups(groupResponse.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getContact();
+  }, []);
   return (
     <>
       <section className="edit-contacts">
@@ -26,6 +52,8 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Enter name"
+                    name=""
+                    value={contactToEdit.name}
                   />
                 </div>
 
@@ -34,6 +62,8 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Photo URL"
+                    name=""
+                    value={contactToEdit.photo}
                   />
                 </div>
 
@@ -42,6 +72,8 @@ const EditContact = () => {
                     type="number"
                     className="form-control"
                     placeholder="Mobile"
+                    name=""
+                    value={contactToEdit.mobile}
                   />
                 </div>
 
@@ -50,6 +82,8 @@ const EditContact = () => {
                     type="email"
                     className="form-control"
                     placeholder="Email"
+                    name=""
+                    value={contactToEdit.email}
                   />
                 </div>
 
@@ -58,6 +92,8 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Company"
+                    name=""
+                    value={contactToEdit.company}
                   />
                 </div>
 
@@ -66,16 +102,26 @@ const EditContact = () => {
                     type="text"
                     className="form-control"
                     placeholder="Title"
+                    name=""
+                    value={contactToEdit.title}
                   />
                 </div>
 
                 <div className="mb-3">
-                  <select className="form-control">
+                  <select
+                    className="form-control"
+                    name=""
+                    value={contactToEdit.group}
+                  >
                     <option value="">Select a group</option>
-                    <option value="">Family</option>
-                    <option value="">Friends</option>
-                    <option value="">Work</option>
-                    <option value="">Other</option>
+                    {groups.length > 0 &&
+                      groups.map((group) => {
+                        return (
+                          <option key={group.id} value={group.id}>
+                            {group.name}
+                          </option>
+                        );
+                      })}
                   </select>
                 </div>
 

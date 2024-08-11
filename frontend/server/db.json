@@ -1,0 +1,74 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "Vinod",
+      "photo": "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png",
+      "mobile": "1234567890",
+      "email": "vph@gmail.com",
+      "title": "Software Engineer",
+      "company": "HCL Technology",
+      "group": "1"
+    },
+    {
+      "id": 2,
+      "name": "John Doe",
+      "photo": "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png",
+      "mobile": "9876543210",
+      "email": "johndoe@example.com",
+      "title": "Project Manager",
+      "company": "Infosys",
+      "group": "1"
+    },
+    {
+      "id": 3,
+      "name": "Jane Smith",
+      "photo": "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png",
+      "mobile": "5556667777",
+      "email": "janesmith@example.com",
+      "title": "UX Designer",
+      "company": "TCS",
+      "group": "2"
+    },
+    {
+      "id": 4,
+      "name": "Alice Johnson",
+      "photo": "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png",
+      "mobile": "4445556666",
+      "email": "alicej@example.com",
+      "title": "Backend Developer",
+      "company": "Wipro",
+      "group": "1"
+    },
+    {
+      "id": 5,
+      "name": "Bob Brown",
+      "photo": "https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2046-uxddkt7j.png",
+      "mobile": "3334445555",
+      "email": "bobbrown@example.com",
+      "title": "Data Scientist",
+      "company": "Cognizant",
+      "group": "2"
+    },
+    {
+      "name": "Virat ",
+      "photo": "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png",
+      "mobile": "1234567890",
+      "email": "vk@gmail.com",
+      "company": "RCB",
+      "title": "Captain",
+      "group": "2",
+      "id": 6
+    }
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "name": "Colleagues"
+    },
+    {
+      "id": 2,
+      "name": "Friends"
+    }
+  ]
+}
