@@ -19,6 +19,7 @@ const EditContact = () => {
   const { contactID } = useParams();
   const navigate = useNavigate();
 
+  // Getting contact to edit
   const getContact = async () => {
     try {
       const response = await axios.get(
@@ -42,6 +43,7 @@ const EditContact = () => {
     setContactToedit({ ...contactToEdit, [name]: value });
   };
 
+  // form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -70,7 +72,7 @@ const EditContact = () => {
         <div className="container mt-3">
           <div className="row">
             <div className="col">
-              <h3 className="text-primary">Edit Contact</h3>
+              <h4 className="text-primary">Edit Contact</h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
                 nemo tempore ex nulla perferendis quibusdam vero omnis autem

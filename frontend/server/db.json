@@ -1,20 +1,9 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "Vinod Hadmode",
-      "photo": "https://static.vecteezy.com/system/resources/previews/019/896/008/original/male-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png",
-      "mobile": "9834721588",
-      "email": "vph@gmail.com",
-      "title": "Software Engineer",
-      "company": "Masai",
-      "group": "2",
-      "number": "12345678908"
-    },
-    {
       "id": 2,
       "name": "John Doe",
-      "photo": "https://cdn.iconscout.com/icon/free/png-256/free-avatar-370-456322.png",
+      "photo": "https://e7.pngegg.com/pngimages/348/800/png-clipart-man-wearing-blue-shirt-illustration-computer-icons-avatar-user-login-avatar-blue-child-thumbnail.png",
       "mobile": "9876543210",
       "email": "johndoe@example.com",
       "title": "Project Manager",

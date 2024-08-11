@@ -8,7 +8,8 @@ const ViewContact = () => {
 
   const { contactID } = useParams();
 
-  const getData = async () => {
+  // Getting all contacts
+  const getContacts = async () => {
     try {
       const contactResponse = await axios.get(
         `http://localhost:3000/contacts/${contactID}`
@@ -29,11 +30,11 @@ const ViewContact = () => {
   };
 
   useEffect(() => {
-    getData();
+    getContacts();
   }, []);
 
-  console.log("Contact", contact);
-  console.log("Group", group);
+  // console.log("Contact", contact);
+  // console.log("Group", group);
 
   return (
     <>
@@ -41,7 +42,7 @@ const ViewContact = () => {
         <div className="container">
           <div className="row">
             <div className="col">
-              <h3 className="text-warning">View Contact</h3>
+              <h4 className="text-warning">View Contact</h4>
               <p className="lead">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
                 tempora neque doloribus laborum sunt impedit quidem earum cumque

@@ -60,7 +60,7 @@ const AddContact = () => {
         <div className="container mt-3">
           <div className="row">
             <div className="col">
-              <h3 className="text-success">Create Contact </h3>
+              <h4 className="text-success">Create Contact </h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est
                 nemo tempore ex nulla perferendis quibusdam vero omnis autem

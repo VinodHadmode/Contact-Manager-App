@@ -4,50 +4,51 @@ import { Link } from "react-router-dom";
 import { FiPlusCircle } from "react-icons/fi";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
+import { RiUserAddLine } from "react-icons/ri";
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
-  const [filteredContacts,setFilteredContacts]=useState([])
+  const [filteredContacts, setFilteredContacts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const getData = async () => {
-    axios
-      .get("http://localhost:3000/contacts")
-      .then((res) => {
-        console.log(res.data);
-        setContacts(res.data);
-        setFilteredContacts(res.data)
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // getting all contacts
+  const getContacts = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/contacts");
+      setContacts(res.data);
+      setFilteredContacts(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
+  // delete contact
   const handleDelete = async (contactID) => {
     try {
       const response = await axios.delete(
         `http://localhost:3000/contacts/${contactID}`
       );
       if (response) {
-        getData();
+        getContacts();
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+  // search functionality
   const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-    const filteredContacts=contacts.filter((contact)=>{
-      return contact.name.toLowerCase().includes(searchQuery.toLowerCase())
-    })
-    setFilteredContacts(filteredContacts)
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filteredContacts = contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(query)
+    );
+    setFilteredContacts(filteredContacts);
   };
 
-  
-
   useEffect(() => {
-    getData();
+    getContacts();
   }, []);
 
   return (
@@ -57,13 +58,16 @@ const ContactList = () => {
           <div className="grid">
             <div className="row">
               <div className="col">
-                <p className="h3">
+                <h4>
                   Contact Manager
-                  <Link to={"/contacts/add"} className="btn btn-success ms-2">
-                    <FiPlusCircle className="me-2" />
+                  <Link
+                    to={"/contacts/add"}
+                    className="btn btn-outline-dark btn-sm ms-2"
+                  >
+                    <RiUserAddLine className="me-2" />
                     New
                   </Link>
-                </p>
+                </h4>
               </div>
             </div>
 
@@ -78,7 +82,7 @@ const ContactList = () => {
 
             <div className="row">
               <div className="col-md-6">
-                <form className="input-group" >
+                <form className="input-group">
                   <input
                     type="text"
                     className="form-control"
@@ -86,9 +90,11 @@ const ContactList = () => {
                     value={searchQuery}
                     onChange={handleSearch}
                   />
-                  <button className="btn btn-outline-dark ms-2" type="submit">
-                    Search
-                  </button>
+                  <div className="input-group-append">
+                    <button className="btn btn-outline-dark ms-3" type="submit">
+                      Search
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
