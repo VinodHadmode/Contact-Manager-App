@@ -54,5 +54,15 @@ The **Contact Manager App** is a full-stack application built using the MERN sta
 - View,Edit or delete contacts using the buttons provided in the contact details view.
 
 #### Screenshots
-(Add screenshots of your app here, showcasing the main functionalities.)
 
+### Contact List Page
+![Contact List](/frontend/src/assets/contact-list.JPG)
+
+### View Contact Page
+![View Contact](/frontend/src/assets/view-contact.JPG)
+
+### Add Contact Page
+![Add Contact](/frontend/src/assets/add-contact.JPG)
+
+### Edit Contact Page
+![Edit Contact](/frontend/src/assets/edit-contact.JPG)
