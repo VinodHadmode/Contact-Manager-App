@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { FiPlusCircle } from "react-icons/fi";
 import { FaEye, FaRegEdit } from "react-icons/fa";
 import { AiOutlineDelete } from "react-icons/ai";
 import { RiUserAddLine } from "react-icons/ri";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ContactList = () => {
   const [contacts, setContacts] = useState([]);
@@ -29,9 +30,11 @@ const ContactList = () => {
         `http://localhost:3000/contacts/${contactID}`
       );
       if (response) {
+        toast.success("Contact deleted successfully!");
         getContacts();
       }
     } catch (error) {
+      toast.error("Failed to delete contact!");
       console.log(error);
     }
   };

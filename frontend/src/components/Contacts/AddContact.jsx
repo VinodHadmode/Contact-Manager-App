@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initState = {
   name: "",
@@ -33,9 +35,11 @@ const AddContact = () => {
         state
       );
       if (response) {
+        toast.success("Contact added successfully!");
         navigate("/contacts/list");
       }
     } catch (error) {
+      toast.error("Failed to add contact!");
       console.log(error);
     }
   };

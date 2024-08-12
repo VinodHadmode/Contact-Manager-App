@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FcContacts } from "react-icons/fc";
 import { LuContact2 } from "react-icons/lu";
 
 const Navbar = () => {

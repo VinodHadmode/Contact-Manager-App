@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initState = {
   name: "",
@@ -53,11 +55,13 @@ const EditContact = () => {
       );
 
       if (response) {
+        toast.success("Contact updated successfully!");
         navigate("/");
       } else {
         navigate(`/contacts/list/${contactID}`);
       }
     } catch (error) {
+      toast.error("Failed to update contact!");
       console.log(error);
     }
   };
