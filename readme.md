@@ -2,17 +2,17 @@
 ### Contact Manager App
 
 #### Overview
-The **Contact Manager App** is a full-stack application built using the MERN stack (MongoDB, Express.js, React, and Node.js). It allows users to manage their contacts effectively with various features like viewing, adding, editing, deleting, and searching contacts.
+The **Contact Manager App** is a full-stack application built using the MERN stack. It allows users to manage their contacts effectively with various features like viewing, adding, editing, deleting, and searching contacts.
 
 #### Features
 1. **Contact List**
    - Displays a list of all saved contacts with essential details like name, mobile, and email.
 
 2. **Add Contact**
-   - Users can add a new contact with details such as name, mobile, email, and photo.
+   - Users can add a new contact with details such as name, mobile, email, company, title, group and photo.
 
 3. **View Contact Details**
-   - View complete details of a contact, including name, mobile, email, and profile picture.
+   - View complete details of a contact, including name, mobile, email, ompany, title, group and profile picture.
 
 4. **Edit Contact**
    - Update the details of an existing contact.
@@ -24,7 +24,7 @@ The **Contact Manager App** is a full-stack application built using the MERN sta
    - Search contacts by name using a search bar.
 
 #### Technologies Used
-- **Frontend:** React.js, Bootstrap
+- **Frontend:** React.js
 - **Backend:** json-server
 - **styling:** Bootstrap
 - **Icons:** React Icons
@@ -47,6 +47,12 @@ The **Contact Manager App** is a full-stack application built using the MERN sta
    npm start
    ```
 5. Open your browser and navigate to `http://localhost:3000` to use the app.
+
+6. Install & start the json-server:
+   ```bash
+   json-server --watch db.json --port 3000
+   ```
+
 
 #### Usage
 - To add a contact, click on the "New" button on the Contact List page.
